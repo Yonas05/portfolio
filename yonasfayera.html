@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yonas Fayera Itana — Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+:root {
+    --primary-bg: #1f1f1f;
+    --accent: #32CD32;
+    --light-text: #e0e0e0;
+    --section-bg: #2a2a2a;
+    --badge-bg: #333;
+    --badge-text: #32CD32;
+    --hover-shadow: rgba(50, 205, 50, 0.3);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:var(--primary-bg);color:var(--light-text);scroll-behavior:smooth;}
+
+nav{
+    background:var(--section-bg);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 6px rgba(0,0,0,0.5);
+}
+nav a{color:var(--light-text);margin-left:20px;text-decoration:none;font-weight:600;transition:0.3s;}
+nav a:hover{color:var(--accent);}
+nav div strong {
+    font-size: 28px; /* bigger nav title */
+}
+
+/* Container and Sections */
+.container{max-width:1000px;margin:40px auto;padding:0 20px;}
+.section{
+    background:var(--section-bg);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:35px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.5);
+    opacity:0;
+    transform:translateY(20px);
+    transition: all 0.8s ease;
+}
+
+h1,h2{margin-bottom:15px;color:var(--accent);}
+p{line-height:1.7;margin-bottom:10px;}
+
+/* Hero Section */
+.hero{text-align:center;padding:50px 0;position:relative;}
+.hero img{
+    width:160px;height:160px;border-radius:50%;object-fit:cover;margin-bottom:20px;
+    border:3px solid var(--accent);
+}
+.hero h1{font-size:56px;margin-bottom:15px;} /* bigger hero name */
+.hero p{font-size:22px;color:var(--light-text);} /* bigger hero subtitle */
+#typed-text{font-size:26px;font-weight:bold;} /* bigger typed roles */
+
+/* Language Switch */
+.lang-switch{text-align:right;margin-bottom:15px;}
+.lang-switch button{
+    background:none;border:1px solid var(--accent);color:var(--accent);
+    padding:5px 10px;border-radius:6px;cursor:pointer;margin-left:5px;
+    transition:0.3s;
+}
+.lang-switch button:hover{background:var(--accent);color:#1f1f1f;}
+
+/* Buttons */
+.btn{
+    background:var(--accent);padding:10px 20px;color:#1f1f1f;border-radius:8px;text-decoration:none;display:inline-block;margin:5px 5px 0 0;transition:0.3s;
+}
+.btn:hover{transform:scale(1.05);box-shadow:0 4px 12px var(--hover-shadow);}
+
+/* Projects */
+.projects{display:flex;flex-direction:column;gap:20px;}
+.project-card{
+    background:#1a1a1a;
+    padding:20px;
+    border-left:5px solid var(--accent);
+    border-radius:8px;
+    transition:0.3s;
+    opacity:0;
+    transform:translateY(20px);
+}
+.project-card:hover{transform:translateY(-5px);box-shadow:0 4px 12px var(--hover-shadow);}
+.project-card h3{color:var(--accent);margin-bottom:8px;}
+
+/* Skills */
+.skills-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.skill-badge{
+    background:var(--badge-bg);
+    color:var(--badge-text);
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:600;
+    transition:0.3s;
+}
+.skill-badge:hover{transform:scale(1.05);box-shadow:0 4px 10px var(--hover-shadow);}
+
+/* Footer */
+footer{
+    background:var(--section-bg);
+    color:var(--light-text);
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    margin-top:30px;
+}
+footer a{
+    color:var(--accent);
+    margin:0 10px;
+    font-size:18px;
+    transition:0.3s;
+}
+footer a:hover{text-decoration:underline;}
+
+/* Contact */
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.contact-info a{
+    color:var(--light-text);
+    text-decoration:none;
+    transition:0.3s;
+}
+.contact-info a:hover{color:var(--accent);}
+.contact-info i{margin-right:10px;}
+
+/* WhatsApp Button */
+.whatsapp-btn{
+    position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;
+    font-size:30px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+.whatsapp-btn:hover{transform:scale(1.1);}
+
+/* Responsive */
+@media(max-width:768px){
+    .skills-list{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div><strong>Yonas Fayera Itana — Portfolio</strong></div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="lang-switch">
+        <span>Language:</span>
+        <button onclick="setLanguage('en')">🇬🇧 English</button>
+        <button onclick="setLanguage('am')">🇪🇹 አማርኛ</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+        <img src="1753689387793.jpg" alt="Yonas Fayera Itana">
+        <h1>Hi, I'm Yonas 👋</h1>
+        <p>I am a <span id="typed-text"></span></p>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" id="summary">
+        <h2 id="summary-title">Professional Summary</h2>
+        <p id="summary-text">
+            I am an experienced Manual QA Tester and Card Banking Officer, with expertise in digital payment systems, secure transaction protocols, and cloud infrastructure. Skilled in designing, testing, and optimizing web and mobile applications. Passionate about delivering efficient, reliable, and secure software solutions.
+        </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section" id="skills">
+        <h2 id="skills-title">Technical Skills</h2>
+        <div class="skills-list">
+            <span class="skill-badge">HTML</span>
+            <span class="skill-badge">CSS</span>
+            <span class="skill-badge">ReactJS</span>
+            <span class="skill-badge">NodeJS</span>
+            <span class="skill-badge">PHP</span>
+            <span class="skill-badge">GoLang</span>
+            <span class="skill-badge">MongoDB</span>
+            <span class="skill-badge">MySQL</span>
+            <span class="skill-badge">Docker</span>
+            <span class="skill-badge">Kubernetes</span>
+            <span class="skill-badge">AWS</span>
+            <span class="skill-badge">Git</span>
+            <span class="skill-badge">Postman</span>
+            <span class="skill-badge">Jira</span>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section" id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Leka Logistic Transport System</h3>
+                <p>Comprehensive transport management system handling fleet operations, route scheduling, and logistics tracking for efficient transport services.</p>
+                <a class="btn" href="https://lekalogisticsystem.vercel.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Complete User Authentication Solution</h3>
+                <p>Secure authentication system featuring user registration, login, password reset, and role-based access control for modern web apps.</p>
+                <a class="btn" href="https://user-authentication-app-lovat.vercel.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Ahadu Academy Ethiopia</h3>
+                <p>School management website providing information, announcements, and resources for students, staff, and parents in a clean interface.</p>
+                <a class="btn" href="https://ahaduacademyschool.vercel.app/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume -->
+    <div class="section" id="resume">
+        <h2>Resume</h2>
+        <p>Download my full resume:</p>
+        <a class="btn" href="YonasfayeraItana.pdf" download>Download CV</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <a href="tel:+251917714887"><i class="fa fa-phone"></i> +251 917 714 887</a>
+            <a href="mailto:yonasfayerai@gmail.com"><i class="fa fa-envelope"></i> yonasfayerai@gmail.com</a>
+            <a href="https://linkedin.com/in/yonasfayera" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/yonasfayera</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; <span id="year"></span> Yonas Fayera Itana. All rights reserved.</p>
+    <a href="https://linkedin.com/in/yonasfayera" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/yonasfayera" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:yonasfayerai@gmail.com"><i class="fa fa-envelope"></i></a>
+    <a href="tel:+251917714887"><i class="fa fa-phone"></i></a>
+</footer>
+
+<a class="whatsapp-btn" href="https://wa.me/251917714887" target="_blank">💬</a>
+
+<script>
+// Set current year
+document.getElementById('year').innerText = new Date().getFullYear();
+
+// Language switch
+function setLanguage(lang){
+    if(lang==='am'){
+        document.getElementById('typed-text').innerText="QA ማንዋር • የካርድ ባንክ ሠራተኛ • Cloud & DevOps እውቀት ባለሙያ";
+        document.getElementById('summary-title').innerText="የሙያ ማጠቃለያ";
+        document.getElementById('summary-text').innerText="እኔ በሙያ የተሞላ  QA ማንዋር እና የካርድ ባንክ ሠራተኛ ነኝ። የዲጂታል ክፍያ ስርዓቶች ፣ ደህንነታዊ ግንዛቤ እና Cloud እውቀት በተለያዩ ድር እና ሞባይል መተግበሪያዎች ላይ ብቃት አለኝ።";
+        document.getElementById('skills-title').innerText="ቴክኖሎጂ ክህሎቶች";
+    } else {
+        document.getElementById('typed-text').innerText="Manual QA Tester • Card Banking Officer • Cloud & DevOps Enthusiast";
+        document.getElementById('summary-title').innerText="Professional Summary";
+        document.getElementById('summary-text').innerText="I am an experienced Manual QA Tester and Card Banking Officer, with expertise in digital payment systems, secure transaction protocols, and cloud infrastructure. Skilled in designing, testing, and optimizing web and mobile applications. Passionate about delivering efficient, reliable, and secure software solutions.";
+        document.getElementById('skills-title').innerText="Technical Skills";
+    }
+}
+
+// Typing effect
+const roles = ["Manual QA Tester", "Card Banking Officer", "Cloud & DevOps Enthusiast"];
+let i=0,j=0,current="",isDeleting=false;
+const typedEl=document.getElementById("typed-text");
+function type(){
+    if(i>=roles.length)i=0;
+    let fullText=roles[i];
+    if(isDeleting){current=fullText.substring(0,j--);}
+    else{current=fullText.substring(0,j++);}
+    typedEl.innerText=current;
+    if(!isDeleting && j===fullText.length+1){isDeleting=true;setTimeout(type,1000);}
+    else if(isDeleting && j===0){isDeleting=false;i++;setTimeout(type,200);}
+    else setTimeout(type,150);
+}
+type();
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity='1';
+            entry.target.style.transform='translateY(0)';
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll('.section, .project-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
